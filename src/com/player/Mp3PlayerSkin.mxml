@@ -16,8 +16,8 @@
 
   <s:Group>
     <!-- Two Channel Audio Volume Slider w/ custom skin -->
-    <s:Label id="left_number" y="15"/>
-    <s:Label id="right_number" y="70"/>
+    <s:Label id="leftChannelLabel" y="15"/>
+    <s:Label id="rightChannelLabel" y="70"/>
     <s:VSlider id="channelVolumeBar" x="100" y="10" width="15" height="80" maximum="100" minimum="0"
              liveDragging="true" showDataTip="true" value="50"  dataTipPrecision='0' />
 

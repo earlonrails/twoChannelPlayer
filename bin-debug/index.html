@@ -5,7 +5,8 @@
       function playerLoaded(){
         var mp3Player = document.getElementById('mp3Player');
 
-        mp3Player.loadAudioClip('http://promodj.com/source/941696/Stephan_Luke_feat_Syntheticsax_invisible_Man_live_in_Jet_Set.mp3');
+        mp3Player.loadAudioClip('http://www.stephaniequinn.com/Music/Canon.mp3');
+        mp3Player.updateChannelLabels('Left', 'Right');
       }
     </script>
   </head>
@@ -14,9 +15,10 @@
     <param name="movie" value="two_channel_player_debug.swf" />
     <param name="quality" value="high" />
     <param name="allowScriptAccess" value="always" />
+    <param name="menu" value="false" />
     <embed src="two_channel_player_debug.swf" quality="high"
         width="600" height="180" name="mp3Player" align="middle"
-        play="true" loop="false" quality="high" allowScriptAccess="always"
+        play="true" loop="false" quality="high" allowScriptAccess="always" menu="false"
         type="application/x-shockwave-flash"
         pluginspage="http://www.macromedia.com/go/getflashplayer">
     </embed>

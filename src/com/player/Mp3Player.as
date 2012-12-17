@@ -52,21 +52,21 @@ package com.player {
     public var channelVolumeBar:VSlider;
     [SkinPart]
     public var volumeBar:HSlider;
+    [SkinPart]
+    public var leftChannelLabel:Label;
+    [SkinPart]
+    public var rightChannelLabel:Label;
 
     public var mySound:Sound;
     public var myChannel:SoundChannel;
     public var soundPosition:Number = 0;
     public var isPlaying:Boolean = false;
     public var timer:Timer;
-    public var leftVolume:Number;
-    public var rightVolume:Number;
 
     public function Mp3Player(){
       super();
 
       setStyle("skinClass", Mp3PlayerSkin);
-      leftVolume = 100;
-      rightVolume = 100;
       timer = new Timer(100);
       timer.addEventListener(TimerEvent.TIMER, handleTime);
     }
@@ -79,8 +79,6 @@ package com.player {
     }
 
     public function set volume(value:Number):void{
-      //if (value<0 || value>1) return;
-
       _volume = value;
 
       if (volumeBar){
@@ -107,7 +105,6 @@ package com.player {
 
     public function get source():String{
       return _source;
-
     }
 
     public function set source(value:String):void{
@@ -116,6 +113,11 @@ package com.player {
         loadSound();
         if (_autoPlay) play();
       }
+    }
+
+    public function setChannelLabels(rightVal:String, leftVal:String):void{
+      leftChannelLabel.text = leftVal;
+      rightChannelLabel.text = rightVal;
     }
 
     private function adjustChannelVolume(channelVolume:Number):void{
