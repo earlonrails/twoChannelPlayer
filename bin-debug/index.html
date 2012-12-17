@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <script type="text/javascript">
+      function playerLoaded(){
+        var mp3Player = document.getElementById('mp3Player');
+
+        mp3Player.loadAudioClip('http://promodj.com/source/941696/Stephan_Luke_feat_Syntheticsax_invisible_Man_live_in_Jet_Set.mp3');
+      }
+    </script>
+  </head>
+<body >
+  <object id="mp3Player" width="600" height="180">
+    <param name="movie" value="two_channel_player_debug.swf" />
+    <param name="quality" value="high" />
+    <param name="allowScriptAccess" value="always" />
+    <embed src="two_channel_player_debug.swf" quality="high"
+        width="600" height="180" name="mp3Player" align="middle"
+        play="true" loop="false" quality="high" allowScriptAccess="always"
+        type="application/x-shockwave-flash"
+        pluginspage="http://www.macromedia.com/go/getflashplayer">
+    </embed>
+  </object>
+</body>
+</html>
+
