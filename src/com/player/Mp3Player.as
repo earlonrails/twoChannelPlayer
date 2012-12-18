@@ -120,19 +120,38 @@ package com.player {
       rightChannelLabel.text = rightVal;
     }
 
-    public function adjustChannelVolume(channelVolume:Number):void{
+    public function adjustPan(panVolume:Number):void{
       var transform:SoundTransform = new SoundTransform();
       var baseVolume:Number = (volume / 100);
       var pan:Number;
 
-      if (channelVolume > 50){
-        pan = (( channelVolume / 50 ) - 1);
-      } else if (channelVolume < 50){
-        pan = (( channelVolume - 50 ) / 50);
+      if (panVolume > 50){
+        pan = (( panVolume / 50 ) - 50);
+      } else if (panVolume < 50){
+        pan = (( panVolume - 50 ) / 50);
       } else {
         pan = 0;
       }
       transform.pan = pan;
+      transform.volume = baseVolume;
+      myChannel.soundTransform = transform;
+    }
+
+    public function adjustChannelVolume(channelVolume:Number):void{
+      var transform:SoundTransform = new SoundTransform();
+      var baseVolume:Number = (volume / 100);
+
+      if (channelVolume > 50){
+       //ADJUST LEFT CHANNEL
+       leftVolume = Math.abs(( channelVolume - 100 ) / 50);
+       rightVolume = 1;
+      } else {
+       // ADUJUST RIGHT CHANNEL
+       rightVolume = Math.abs(( channelVolume / 50 ));
+       leftVolume = 1;
+      }
+      transform.leftToLeft = leftVolume;
+      transform.rightToRight = rightVolume;
       transform.volume = baseVolume;
       myChannel.soundTransform = transform;
     }
