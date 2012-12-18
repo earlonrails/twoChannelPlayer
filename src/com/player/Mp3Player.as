@@ -128,8 +128,7 @@ package com.player {
       if (channelVolume > 50){
         pan = (( channelVolume / 50 ) - 1);
       } else if (channelVolume < 50){
-        //ADJUST LEFT CHANNEL
-        pan = (( channelVolume / 50 ) - 1);
+        pan = (( channelVolume - 50 ) / 50);
       } else {
         pan = 0;
       }
