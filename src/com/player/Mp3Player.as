@@ -120,7 +120,7 @@ package com.player {
       rightChannelLabel.text = rightVal;
     }
 
-    private function adjustChannelVolume(channelVolume:Number):void{
+    public function adjustChannelVolume(channelVolume:Number):void{
       var transform:SoundTransform = new SoundTransform();
       var baseVolume:Number = (volume / 100);
       var pan:Number;
