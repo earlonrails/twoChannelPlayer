@@ -2,11 +2,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
   <head>
     <script type="text/javascript">
+      var mp3Player;
       function playerLoaded(){
-        var mp3Player = document.getElementById('mp3Player');
+        mp3Player = document.getElementById('mp3Player');
 
         mp3Player.loadAudioClip('http://www.stephaniequinn.com/Music/Canon.mp3');
         mp3Player.updateChannelLabels('Left', 'Right');
+      }
+
+      function currentPlayTime(){
+        alert(mp3Player.getPlayMs());
+      }
+
+      function loadAnother(){
+        mp3Player.loadAudioClip('http://freeplaymusic.com/search/download_file.php?id=4&dur=0&type=mp3');
+      }
+
+      function causeLoadError(){
+        mp3Player.loadAudioClip('http://www.google.com/4/0/4');
       }
     </script>
   </head>
@@ -23,6 +36,9 @@
         pluginspage="http://www.macromedia.com/go/getflashplayer">
     </embed>
   </object>
+  <a href="#" onclick="currentPlayTime();">Current Play Time</a>
+  <a href="#" onclick="loadAnother();">Load Another</a>
+  <a href="#" onclick="causeLoadError();">Cause Error</a>
 </body>
 </html>
 

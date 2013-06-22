@@ -2,7 +2,7 @@
 <s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
 			   xmlns:s="library://ns.adobe.com/flex/spark"
 			   xmlns:mx="library://ns.adobe.com/flex/mx"
-			   xmlns:player="com.player.*"
+			   xmlns:Player="com.player.*"
          initialize="init();">
 
   <fx:Script>
@@ -27,29 +27,44 @@
           try{
             ExternalInterface.addCallback("loadAudioClip", loadAudio);
             ExternalInterface.addCallback("updateChannelLabels", setLabels);
+            ExternalInterface.addCallback("getPlayMs", getTrackPosition);
           } catch (error:SecurityError){
              Alert.show("A SecurityError occurred: " + error.message + "\n");
+             consoleLog("A SecurityError occurred: " + error.message + "\n");
           } catch (error:Error){
              Alert.show("An Error occurred: " + error.message + "\n");
+             consoleLog("An Error occurred: " + error.message + "\n");
           }
           ExternalInterface.call("playerLoaded");
         } else {
           Alert.show("No ExternalInterface");
+          consoleLog("No ExternalInterface");
+        }
+      }
+
+      private function consoleLog(message:String):void {
+        if (ExternalInterface.available){
+          message = "[FlashMp3Player Log] " + message;
+          ExternalInterface.call("console.log", message);
         }
       }
 
       // public functions
-      public function loadAudio(url:String):void{
-        mp3Player.source = url;
+      public function loadAudio(url:String, seekAhead:Number = 0):void{
+        mp3Player.seekToSource(url, seekAhead);
       }
 
       public function setLabels(leftLabel:String, rightLabel:String):void{
         mp3Player.setChannelLabels(leftLabel, rightLabel);
       }
+
+      public function getTrackPosition():Number {
+        return mp3Player.getTrackPosition();
+      }
     ]]>
   </fx:Script>
 
-	<player:Mp3Player id="mp3Player" width="100%" top="5"
+	<Player:Mp3Player id="mp3Player" width="100%" top="5"
     source=""
 	  autoPlay="true" />
 
